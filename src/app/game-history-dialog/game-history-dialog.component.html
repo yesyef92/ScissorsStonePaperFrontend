@@ -1,0 +1,25 @@
+<fa-icon class="xMark" [icon]="faxmark" (click)="closeDialog()"></fa-icon>
+<table mat-table [dataSource]="playedGames" class="mat-elevation-z8">
+  <ng-container matColumnDef="playedAt">
+    <th mat-header-cell *matHeaderCellDef> Played at:</th>
+    <td mat-cell *matCellDef="let game"> {{game.playedAt | date:'yyyy-MM-dd HH:mm'}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="userChoice">
+    <th mat-header-cell *matHeaderCellDef> Your choice:</th>
+    <td mat-cell *matCellDef="let game"> {{game.userChoice | titlecase}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="computerChoice">
+    <th mat-header-cell *matHeaderCellDef> Computer choice:</th>
+    <td mat-cell *matCellDef="let game"> {{game.computerChoice | titlecase}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="result">
+    <th mat-header-cell *matHeaderCellDef> Result:</th>
+    <td mat-cell *matCellDef="let game"> {{game.result | titlecase}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let game; columns: columnsToDisplay;"></tr>
+</table>
